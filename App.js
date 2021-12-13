@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Map, Modal, Panel } from './Components';
 
 export default function App() {
 
+  const [puntos, setPuntos] = useState([]);
+
   const handLongPress = ({ nativeEvent }) => {
-    console.log(nativeEvent);
+    const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate });
+    setPuntos(newPuntos);
+    console.log(newPuntos)
   }
 
   return (
