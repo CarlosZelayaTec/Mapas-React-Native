@@ -9,7 +9,7 @@ export default function App() {
   const [puntosTemp, setPuntoTemp] = useState([]);
   const [nombre, setNombre] = useState('');
   const [visibility, setVisibility] = useState(false);
-  const [ visibilityFilter, setVisibilityFilter ] = useState('new_point');
+  const [visibilityFilter, setVisibilityFilter] = useState('new_point');
 
     // Abre el modal y y guarda las coordenadas en un estado temporal
   const handLongPress = ({ nativeEvent }) => {
@@ -36,7 +36,11 @@ export default function App() {
     setVisibilityFilter('all_Pointer');
     setVisibility(true);
   }
-   
+
+  // const close = () =>{
+  //   setVisibility(!visibility);
+  // }
+
   return (
     <View style={styles.container}>
       <Map onLongPress={handLongPress} />
@@ -47,10 +51,10 @@ export default function App() {
               <Input title="Nombre" placeholder="Nombre del punto" onChangeText={ handleChangeText } />
                 <Button title="Aceptar" onPress={handleSubmit} />
            </>
-           : <List data={ puntos } />
+           : <List data={puntos} onPress={()=>{setVisibility(!visibility)}}/>
 } 
        </Modal>
-        <Panel onPressLeft={handleLista} textLeft={'title'}/>
+        <Panel onPressLeft={handleLista} textLeft={'Lista'}/>
       <StatusBar style="auto" />
   
       </View>
