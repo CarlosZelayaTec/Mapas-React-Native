@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width - 120,
     },
     texto: {
-        fontSize: 25,
+        fontSize: 20,
         marginBottom: 10,
-        height: 30,
+        height: 32,
     },
     puntos: {
         borderBottomWidth: 1,
