@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Button, FlatList, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Button, FlatList, Dimensions, Platform } from "react-native";
 
 export default ({ onPress, data }) => {
     return(
@@ -27,15 +27,31 @@ const styles = StyleSheet.create({
     listas: {
         height: Dimensions.get('screen').height - 200,
         width: Dimensions.get('window').width - 120,
+
     },
     texto: {
-        fontSize: 20,
         marginBottom: 10,
-        height: 32,
+        height: 35,
+        color: '#000',
+        textAlign: 'center',
+        padding: 5,
+        ...Platform.select({
+            ios: {
+                fontSize: 25,
+            },
+            android: {
+                height: 40,
+                fontSize: 18,
+            },
+            default: { 
+                color: '#000', 
+            }
+        })
     },
     puntos: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#000',
+        borderWidth: 1,
+        borderColor: '#000',
+        borderRadius: 20,
         // backgroundColor: 'red',
         margin: 10,
     },
