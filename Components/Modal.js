@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { StyleSheet, Modal, View, Text } from 'react-native';
 
 export default ( { children, visible  } ) => {

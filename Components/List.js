@@ -7,7 +7,13 @@ export default ({ onPress, data }) => {
             <View style={styles.listas}>
                 <FlatList 
                     data={data.map(x => x.name)}
-                    renderItem={({item}) => <Text style={styles.texto}>{item}</Text>}
+                    renderItem={({item}) => {
+                        return(
+                            <View style={styles.puntos}>
+                                <Text style={styles.texto}>{item}</Text>
+                            </View>
+                        )
+                    }}
                     keyExtractor={item => item}                
                 />
                 
@@ -23,8 +29,14 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width - 120,
     },
     texto: {
-        fontSize: 30,
-        textAlign: 'center',
-        padding: 20,
+        fontSize: 25,
+        marginBottom: 10,
+        height: 30,
+    },
+    puntos: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#000',
+        // backgroundColor: 'red',
+        margin: 10,
     },
 })

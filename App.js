@@ -10,6 +10,7 @@ export default function App() {
   const [nombre, setNombre] = useState('');
   const [visibility, setVisibility] = useState(false);
   const [visibilityFilter, setVisibilityFilter] = useState('new_point');
+  const [visibiltyPointFilter, setvisibiltyPointFilter] = useState(true);
 
     // Abre el modal y y guarda las coordenadas en un estado temporal
   const handLongPress = ({ nativeEvent }) => {
@@ -37,24 +38,26 @@ export default function App() {
     setVisibility(true);
   }
 
-  // const close = () =>{
-  //   setVisibility(!visibility);
-  // }
+  const viewPoints = () => {
+    setvisibiltyPointFilter(!visibiltyPointFilter);
+  }
 
   return (
     <View style={styles.container}>
-      <Map onLongPress={handLongPress} />
+      <Map onLongPress={handLongPress} puntos={puntos} viewPointFilter={visibiltyPointFilter}/>
        <Modal visible={visibility}>
          {visibilityFilter === 'new_point'
          ?  
           <> 
               <Input title="Nombre" placeholder="Nombre del punto" onChangeText={ handleChangeText } />
+              <View style={styles.botonA}>
                 <Button title="Aceptar" onPress={handleSubmit} />
+              </View>
            </>
            : <List data={puntos} onPress={()=>{setVisibility(!visibility)}}/>
 } 
        </Modal>
-        <Panel onPressLeft={handleLista} textLeft={'Lista'}/>
+        <Panel onPressLeft={handleLista} textLeft={'Lista'} viewPoints={viewPoints} />
       <StatusBar style="auto" />
   
       </View>
@@ -68,4 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
+  botonA: {
+    marginBottom: 30
+  }
 });
